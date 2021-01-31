@@ -1,0 +1,753 @@
+*{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+.hide {
+    display: none;
+}
+    
+body{
+      /*background-color: rgb(253, 213, 0);*/
+      background-image: url("back.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+}
+    
+.pokeball{
+      position:relative;
+      display:flex;
+      justify-content:center;
+      width: 60px;
+      height: 60px;
+}
+.pokeball:after{
+      content:'';
+      background:rgba(0,0,0,.2);
+      height: 5px;
+      width:60%;
+      border-radius: 100%;
+    
+      position:absolute;
+      bottom: -2px;
+      
+      
+}
+    
+.pokeball:before{
+      content: '';
+      position: absolute;
+      background-color: red;
+      width: 8px;
+      height:8px;
+      border-radius: 50%;
+      bottom: 26px;
+      right: 26px;
+      z-index: 4;
+      animation: capturing .6s alternate infinite ease-in-out, flare 1s alternate infinite ease-in-out;
+      
+}
+    
+.pokeball > span{
+      position: relative;
+      z-index:2;
+      display:block;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 50% ;
+      overflow: hidden;
+      border: 3px solid;
+      animation: capturing .6s alternate infinite ease-in-out;
+}
+    
+.pokeball >span:after{
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 30px;
+      background-color: red;
+      border-bottom: 4px solid;
+      top: -4px;
+}
+    
+.pokeball >span:before{
+      content: '';
+      position: absolute;
+      background-color: #fff;
+      width: 12px;
+      height:12px;
+      border: 4px solid;
+      border-radius: 50%;
+      bottom: 17px;
+      right: 17px;
+      z-index: 1;
+}
+    
+/* AnimationFrames */
+@keyframes capturing{
+    0%,90% {
+        transform: rotate(0deg) translatex(0);
+    }
+    20%,80%{
+        transform: rotate(12deg) translatex(1px);
+    }
+    50%,100%{
+        transform: rotate(-12deg) translatex(-2px);
+    }
+}
+    
+    
+@keyframes flare{
+    0%,80%{
+        opacity: .2;
+    }
+    20%,100%{
+        opacity: .6;
+    }
+}
+
+.details {
+    padding: 5px 5px 0px 10px;
+    font-size: 32px;
+    font-family: sans-serif;
+    text-shadow: 1px 2px rgb(65, 65, 65);
+    color: #fff;
+    background-color: rgb(237 70 92 / 60%);
+    margin-right: 10px;
+}
+
+.details2 {
+    padding: 5px 5px 0px 10px;
+    font-size: 32px;
+    font-family: sans-serif;
+    text-shadow: 1px 2px rgb(65, 65, 65);
+    color: #fff;
+    background-color: rgb(237 70 92 / 60%);
+    margin-left: 10px;
+}
+
+.details>ul {
+    list-style: none;
+}
+
+.navi {
+    margin-top: auto;
+}
+
+.glow {
+    width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow:
+    0 0 60px 30px #fff,  /* inner white */
+    0 0 100px 60px #f0f, /* middle magenta */
+    0 0 140px 90px #0ff; /* outer cyan */
+}
+
+/**
+
+Pokedex CSS
+
+**/
+:root {
+    --bg-rose: #ffabd4;
+    --bg-red: #ff055c;
+    --bg-darkred: red;
+    --bg-darkgray: #474445;
+    --bg-black: #000000;
+    --bg-blue: #0d87ff;
+    --bg-lightblue: #8cc6ff;
+    --bg-skyblue: skyblue;
+    --bg-orange: #ffa60d;
+    --bg-lightorange: #ffdc96;
+    --bg-white: #ffffff;
+    --bg-yellow: yellow;
+    --bg-lightgreen: #51f57d;
+    --bg-shadow: rgba(116, 117, 116, .5);
+  }
+  
+  .pokeindex * {
+    position: absolute;
+  }
+  
+  .pokeindex {
+    height: 700px;
+    width: 600px;
+    margin: 0 auto;
+    display: flex;
+  }
+  
+  .pokeindex-left {
+    height: 60%;
+    width: 47%;
+    background-color: var(--bg-red);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid var(--bg-black);
+    border-right-color: var(--bg-red);
+    border-radius: 0 0 0 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+  
+  .pokeindex-left::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 55%;
+    height: 10%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-red);
+    border-radius: 200px 0 0 0;
+    border-bottom: var(--bg-red);
+    top: -10%;
+    right: -4px;
+  }
+  
+  .pokeindex-left__top {
+    width: 114%;
+    height: 25%;
+    border: 2px solid var(--bg-black);
+    border-radius: 10px 10px 0 0;
+    background-color: var(--bg-red);
+    top: -26%;
+    left: -1%;
+    z-index: -1;
+  }
+  
+  .circle-big {
+    height: 70%;
+    width: 24%;
+    border: 2px solid var(--bg-black);
+    border-radius: 50%;
+    background-color: var(--bg-white);
+    top: 10%;
+    left: 3%;
+  }
+  
+  .circle-big::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 75%;
+    width: 75%;
+    border: 2px solid var(--bg-black);
+    border-radius: 50%;
+    background-color: var(--bg-blue);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .circle-big::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 15%;
+    width: 18%;
+    border-radius: 40px / 30px;
+    background-color: var(--bg-skyblue);
+    top: 25%;
+    left: 25%;
+    transform: rotate(-45deg);
+  }
+  
+  .circle-small {
+    height: 15%;
+    width: 5%;
+    border: 2px solid var(--bg-black);
+    border-radius: 50%;
+    background-color: var(--bg-yellow);
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .circle-small::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-darkred);
+    border-radius: 50%;
+    top: -15%;
+    left: -200%;
+  }
+  
+  .circle-small::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-lightgreen);
+    border-radius: 50%;
+    top: -15%;
+    right: -200%;
+  }
+  
+  .pokeindex-left__screen { 
+    height: 50%;
+    width: 80%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-white);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    border-radius: 5px 5px 5px 15%;
+    position: relative;
+  }
+  
+  .pokeindex-left__buttons { 
+    height: 30%;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  
+  .pokeindex-left__buttons .buttons { 
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+  }
+  
+  .pokeindex-left__buttons .buttons .buttons-circle { 
+    height: 70%;
+    width: 20%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-darkgray);
+    border-radius: 50%;
+    position: relative;
+    margin-right: 5%;
+  }
+  
+  .pokeindex-left__buttons .buttons .buttons-quad { 
+    height: 70%;
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .pokeindex-left__buttons .buttons .buttons-quad span { 
+    height: 10%;
+    width: 42%;
+    border: 2px solid var(--bg-black);
+    position: relative;
+    border-radius: 5px
+  }
+  
+  .pokeindex-left__buttons .buttons .buttons-quad span:nth-child(1) {
+    background-color: var(--bg-darkred);
+  }
+  
+  .pokeindex-left__buttons .buttons .buttons-quad span:nth-child(2) {
+    background-color: var(--bg-lightblue);
+  }
+  
+  .pokeindex-left__buttons .controller { 
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: relative;
+  }
+  
+  .pokeindex-left__buttons .controller .controller-touch { 
+    height: 75%;
+    width: 40%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-lightgreen);
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .controller-touch {
+      padding: 3px;
+      font-weight: bold;
+  }
+
+  .controller-touch:hover{
+      background-color: #8cf3a8;
+      cursor: pointer;
+  }
+  
+  .pokeindex-left__buttons .controller .controller-joystick {
+    height: 30%;
+    width: 30%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-darkgray);
+    border-radius: 5px;
+    position: relative;
+    margin-left: 5%;
+  }
+  
+  .pokeindex-left__buttons .controller .controller-joystick::before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-darkgray);
+    border-radius: 5px;
+    transform: rotate(90deg);
+    left: -2%;
+    top: -10%;
+  }
+  
+  .pokeindex-left__buttons .controller .controller-joystick::after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-darkgray);
+    border-radius: 5px;
+    left: 0;
+    top: 0;
+  }
+  
+  .pokeindex-left__screen .dots {
+    height: 4%;
+    width: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    position: relative;
+  }
+  
+  .pokeindex-left__screen .dots span { 
+    height: 100%;
+    width: 25%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-red);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+  }
+  
+  .pokeindex-left__screen .screen {
+    height: 65%;
+    width: 80%;
+    border: 2px solid var(--bg-black);
+    /*background-color: var(--bg-darkgray);*/
+    background-image: url("profile.jpeg");
+    background-size: cover;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .pokeindex-left__screen .status {
+    height: 20%;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pokeindex-left__screen .status .status-light {
+    height: 50%;
+    width: 12%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-red);
+    border-radius: 50%;
+    position: relative;
+  }
+  
+  .pokeindex-left__screen .status .status-light::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 25%;
+    width: 28%;
+    border-radius: 40px / 30px;
+    background-color: var(--bg-rose);
+    top: 20%;
+    left: 20%;
+    transform: rotate(-45deg);
+  }
+  
+  .pokeindex-left__screen .status .status-sound {
+    height: 55%;
+    width: 17%;
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+  }
+  
+  .pokeindex-left__screen .status .status-sound span{ 
+    height: 15%;
+    width: 100%;
+    background-color: var(--bg-black);
+    position: relative;
+    border-radius: 5px;
+  }
+  
+  .pokeindex-middle {
+    height: 60%;
+    width: 6%;
+    background-color: var(--bg-red);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid var(--bg-black);
+    box-shadow: inset 8px 0px 1px var(--bg-shadow);
+  }
+  
+  .pokeindex-middle::before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 9%;
+    width: 100%;
+    border-top: 2px solid var(--bg-black);
+    border-bottom: 2px solid var(--bg-black);
+    left: 0;
+    top: -10%;
+    box-shadow: inset 8px 0px 1px var(--bg-shadow);
+  }
+  
+  .pokeindex-middle::after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 5%;
+    width: 100%;
+    border-top: 2px solid var(--bg-black);
+    border-bottom: 2px solid var(--bg-black);
+    left: 0;
+    bottom: 5%;
+  }
+  
+  .pokeindex-right {
+    height: 60%;
+    width: 47%;
+    background-color: var(--bg-red);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid var(--bg-black);
+    border-left-color: var(--bg-red);
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+  }
+  
+  .pokeindex-right::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 55%;
+    height: 10%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-red);
+    border-radius: 0 200px 0 0;
+    border-bottom: var(--bg-red);
+    top: -10%;
+    left: -4px;
+  }
+  
+  .pokeindex-right__screen {
+    width: 80%;
+    height: 25%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-darkgray);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    position: relative;
+    color: #fff;
+    font-weight: bold;
+    font-size: large;
+    padding: 5px 0px 0px 5px;
+  }
+
+  .pokeindex-right__screen a {
+      color: white;
+  }
+
+  .main>button {
+
+    padding: 20px;
+    background-color: crimson;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: large;
+    border-radius: 10%;
+    cursor: pointer;
+  }
+  
+  .pokeindex-right__buttons {
+    width: 80%;
+    height: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-end;
+  }
+
+  .pokeindex-right__buttons span:hover {
+      background-color: #add3f9;
+      cursor: pointer;
+  }
+  
+  .pokeindex-right__buttons span {
+    width: 18%;
+    height: 32%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-lightblue);
+    position: relative;
+    border-radius: 5px;
+  }
+  
+  .pokeindex-right__buttons-quadruple {
+    width: 80%;
+    height: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pokeindex-right__buttons-quadruple .dot {
+    height: 30%;
+    width: 50%;
+    position: relative;
+    display: flex;
+  }
+  
+  .pokeindex-right__buttons-quadruple .dot span {
+    height: 90%;
+    width: 10%;
+    border: 2px solid var(--bg-black);
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    margin-left: 10%;
+  }
+  
+  .pokeindex-right__buttons-quadruple .button {
+    height: 20%;
+    width: 50%;
+    position: relative;
+    display: flex;
+  }
+  
+  .pokeindex-right__buttons-quadruple .button span {
+    height: 80%;
+    width: 100%;
+    border: 2px solid var(--bg-black);
+    border-radius: 1px;
+    background-color: var(--bg-darkgray);
+    position: relative;
+    display: inline-block;
+    margin-right: 5%;
+  }
+  
+  .pokeindex-right__buttons-triple {
+    width: 80%;
+    height: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .pokeindex-right__buttons-triple .button {
+    height: 100%;
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .pokeindex-right__buttons-triple .button span {
+    height: 55%;
+    width: 35%;
+    position: relative;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-white);
+    border-radius: 5px;
+  }
+  
+  .pokeindex-right__buttons-triple .light {
+    height: 55%;
+    width: 16%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-orange);
+    border-radius: 50%;
+    position: relative;
+    align-self: flex-start;
+  }
+  
+  .pokeindex-right__buttons-triple .light::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 25%;
+    width: 28%;
+    border-radius: 40px / 30px;
+    background-color: var(--bg-lightorange);
+    top: 20%;
+    left: 20%;
+    transform: rotate(-45deg);
+  }
+  
+  .pokeindex-right__buttons-double {
+    width: 80%;
+    height: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .pokeindex-right__buttons-double span {
+    width: 40%;
+    height: 45%;
+    border: 2px solid var(--bg-black);
+    background-color: var(--bg-darkgray);
+    position: relative;
+    border-radius: 5px;
+  }
