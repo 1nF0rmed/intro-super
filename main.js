@@ -7,6 +7,7 @@ $(document).ready(function(){
     $(".details2").hide();
     $("#help").hide();
     $(".pokeball").hide();
+    $("#s2").hide();
 
     document.getElementById('alarm').muted = false;
     document.getElementById('release').muted = false;
@@ -60,6 +61,16 @@ $(document).ready(function(){
 
     $(".controller-touch").click(function(){
         $(".details2").slideDown(500);
+    });
+
+    $("#prev").click(function(){
+        $("#s1").toggle();
+        $("#s2").toggle();
+    });
+
+    $("#next").click(function(){
+        $("#s1").toggle();
+        $("#s2").toggle();
     });
 
 });

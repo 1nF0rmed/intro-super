@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Pokemon GB";
+  src: url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.eot?") format("eot"),
+       url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.woff") format("woff"),
+       url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.ttf") format("truetype"),
+       url("https://dl.dropboxusercontent.com/u/10822923/Pokemon_GB/Pokemon_GB.svg#PokemonGB") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 *{
     box-sizing: border-box;
     padding:0;
@@ -113,13 +123,17 @@ body{
 }
 
 .details {
-    padding: 5px 5px 0px 10px;
+    padding: 15px;
     font-size: 32px;
-    font-family: sans-serif;
-    text-shadow: 1px 2px rgb(65, 65, 65);
-    color: #fff;
-    background-color: rgb(237 70 92 / 60%);
+    font-family: "Pokemon GB";
+    color: black;
+    background-color: white;
     margin-right: 10px;
+    border: 1px solid white;
+    box-shadow: 0 1px 0 1px black,
+              inset 0 1px 0 1px black,
+              0 0 0 1px black,
+              inset 0 0 0 1px black;
 }
 
 .details2 {
@@ -128,8 +142,13 @@ body{
     font-family: sans-serif;
     text-shadow: 1px 2px rgb(65, 65, 65);
     color: #fff;
-    background-color: rgb(237 70 92 / 60%);
+    background-color: white;
     margin-left: 10px;
+    border: 1px solid white;
+    box-shadow: 0 1px 0 1px black,
+              inset 0 1px 0 1px black,
+              0 0 0 1px black,
+              inset 0 0 0 1px black;
 }
 
 .details>ul {
@@ -149,6 +168,30 @@ body{
     0 0 60px 30px #fff,  /* inner white */
     0 0 100px 60px #f0f, /* middle magenta */
     0 0 140px 90px #0ff; /* outer cyan */
+}
+
+i {
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top-color: black;
+  margin-top: 15px;
+  animation: bounce 0.5s ease-in-out 0 infinite alternate;
+  float: right;
+}
+
+@keyframes bounce {
+  50% {
+    margin-top:12px;
+  }
+  100% {
+    margin-top:15px;
+  }
+}
+
+
+@keyframes lightup {
+
 }
 
 /**
@@ -716,6 +759,13 @@ Pokedex CSS
     border-radius: 50%;
     position: relative;
     align-self: flex-start;
+    animation: blink 1.5s infinite;
+  }
+
+  @keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0.3;}
+    100% {opacity: 1;}
   }
   
   .pokeindex-right__buttons-triple .light::after {
@@ -750,4 +800,8 @@ Pokedex CSS
     background-color: var(--bg-darkgray);
     position: relative;
     border-radius: 5px;
+  }
+
+  li {
+    font-size: 24px;
   }
